@@ -1,56 +1,33 @@
-const check = [1, "satu", true, ["check1", "check2"], { checkSatu: "1" }];
-let i = 0;
-const tipeData = {
-  number: 0,
-  string: 0,
-  boolean: 0,
-  object: 0,
-  array: 0,
-};
+const data = [1, 2, "satu", true, ["data1", "data2"], { dataSatu: "1" }, 3];
 
-while (typeof check[i] !== "number") {
-  if (check >= check[i]) {
-    tipeData[check[i]]++;
+let dataNumber = 0
+let dataString = 0
+let dataBoolean = 0
+let dataArray = 0
+let dataObjek = 0
+
+for(let i = 0; i < data.length; i++ ){
+  if(typeof data[i] === 'number'){
+    dataNumber = dataNumber + 1
+
+  }  else if(typeof data[i] === 'string'){
+    dataString = dataString + 1
+
+  } else if(typeof data[i] === 'boolean'){
+    dataBoolean = dataBoolean + 1
+
+  } else if(Array.isArray(data[i])){
+    dataArray = dataArray + 1
+
+  } else if(data[i] instanceof Object){
+    dataObjek = dataObjek + 1
+
   } else {
-    i = i + 1;
+    console.log(`unexpected type of data`);
   }
 }
-
-while (typeof check[i] !== String) {
-  if (check >= check[i]) {
-    tipeData[check[i]]++;
-  } else {
-    i = i + 1;
-  }
-}
-
-while (typeof check[i] !== boolean) {
-  if (check >= check[i]) {
-    tipeData[check[i]]++;
-  } else {
-    i = i + 1;
-  }
-}
-
-while (Array.isArray(check)) {
-  if (check >= check[i]) {
-    tipeData[check[i]]++;
-  } else {
-    i = i + 1;
-  }
-}
-
-while (check instanceof Object) {
-  if (check >= check[i]) {
-    tipeData[check[i]]++;
-  } else {
-    i = i + 1;
-  }
-}
-
-const keys = Object.keys(tipeData);
-for (let i = 0; i < check.length; i++) {
-  if (tipeData[keys[i]] != 0) {
-    console.log(keys[i], tipeData[keys[i]], "buah");
-  }
-}
+console.log(`Tipe data Number ada ${dataNumber} buah`);
+console.log(`Tipe data String ada ${dataString} buah`);
+console.log(`Tipe data Boolean ada ${dataBoolean} buah`);
+console.log(`Tipe data Array ada ${dataArray} buah`);
+console.log(`Tipe data Objek ada ${dataObjek} buah`);
